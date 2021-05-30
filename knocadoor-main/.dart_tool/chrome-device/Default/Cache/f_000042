@@ -1,0 +1,2090 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/services/clipboard.dart', 'packages/flutter/src/material/text_form_field.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/widgets/value_listenable_builder.dart', 'packages/flutter/src/widgets/implicit_animations.dart', 'packages/flutter/src/widgets/animated_switcher.dart', 'packages/flutter/src/foundation/key.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/input_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/widgets/form.dart', 'packages/flutter/src/services/text_input.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/services/text_formatter.dart'], (function load__packages__pinput__pin_put__pin_put_state_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__services__clipboard$46dart, packages__flutter__src__material__text_form_field$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__widgets__value_listenable_builder$46dart, packages__flutter__src__widgets__implicit_animations$46dart, packages__flutter__src__widgets__animated_switcher$46dart, packages__flutter__src__foundation__key$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__input_border$46dart, packages__flutter__src__painting__borders$46dart, packages__flutter__src__widgets__form$46dart, packages__flutter__src__services__text_input$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__services__text_formatter$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const editable_text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__editable_text;
+  const focus_manager = packages__flutter__src__widgets__widget_span$46dart.src__widgets__focus_manager;
+  const binding = packages__flutter__src__widgets__widget_span$46dart.src__widgets__binding;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const focus_scope = packages__flutter__src__widgets__widget_span$46dart.src__widgets__focus_scope;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const clipboard = packages__flutter__src__services__clipboard$46dart.src__services__clipboard;
+  const text_form_field = packages__flutter__src__material__text_form_field$46dart.src__material__text_form_field;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const value_listenable_builder = packages__flutter__src__widgets__value_listenable_builder$46dart.src__widgets__value_listenable_builder;
+  const implicit_animations = packages__flutter__src__widgets__implicit_animations$46dart.src__widgets__implicit_animations;
+  const animated_switcher = packages__flutter__src__widgets__animated_switcher$46dart.src__widgets__animated_switcher;
+  const key = packages__flutter__src__foundation__key$46dart.src__foundation__key;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const input_decorator = packages__flutter__src__material__icon_button$46dart.src__material__input_decorator;
+  const input_border = packages__flutter__src__material__input_border$46dart.src__material__input_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const form = packages__flutter__src__widgets__form$46dart.src__widgets__form;
+  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const text_formatter = packages__flutter__src__services__text_formatter$46dart.src__services__text_formatter;
+  var pin_put_state = Object.create(dart.library);
+  var pin_put = Object.create(dart.library);
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $where = dartx.where;
+  var $length = dartx.length;
+  var $insert = dartx.insert;
+  var $_get = dartx._get;
+  var $toString = dartx.toString;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    ValueNotifierOfStringL: () => (T.ValueNotifierOfStringL = dart.constFn(change_notifier.ValueNotifier$(T.StringL())))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    TweenOfdoubleL: () => (T.TweenOfdoubleL = dart.constFn(tween.Tween$(T.doubleL())))(),
+    AnimationStatusL: () => (T.AnimationStatusL = dart.constFn(dart.legacy(animation.AnimationStatus)))(),
+    AnimationStatusLToNull: () => (T.AnimationStatusLToNull = dart.constFn(dart.fnType(core.Null, [T.AnimationStatusL()])))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    ValueListenableBuilderOfStringL: () => (T.ValueListenableBuilderOfStringL = dart.constFn(value_listenable_builder.ValueListenableBuilder$(T.StringL())))(),
+    GestureDetectorL: () => (T.GestureDetectorL = dart.constFn(dart.legacy(gesture_detector.GestureDetector)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BuildContextLAndStringLAndWidgetLToGestureDetectorL: () => (T.BuildContextLAndStringLAndWidgetLToGestureDetectorL = dart.constFn(dart.fnType(T.GestureDetectorL(), [T.BuildContextL(), T.StringL(), T.WidgetL()])))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    IterableOfintL: () => (T.IterableOfintL = dart.constFn(core.Iterable$(T.intL())))(),
+    intLToWidgetL: () => (T.intLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.intL()])))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    intLToboolL: () => (T.intLToboolL = dart.constFn(dart.fnType(T.boolL(), [T.intL()])))(),
+    AnimationOfdoubleL: () => (T.AnimationOfdoubleL = dart.constFn(animation.Animation$(T.doubleL())))(),
+    AnimationLOfdoubleL: () => (T.AnimationLOfdoubleL = dart.constFn(dart.legacy(T.AnimationOfdoubleL())))(),
+    WidgetLAndAnimationLOfdoubleLToWidgetL: () => (T.WidgetLAndAnimationLOfdoubleLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.WidgetL(), T.AnimationLOfdoubleL()])))(),
+    ValueKeyOfStringL: () => (T.ValueKeyOfStringL = dart.constFn(key.ValueKey$(T.StringL())))(),
+    AnimationOfdouble: () => (T.AnimationOfdouble = dart.constFn(animation.Animation$(core.double)))(),
+    OffsetL: () => (T.OffsetL = dart.constFn(dart.legacy(ui.Offset)))(),
+    TweenOfOffsetL: () => (T.TweenOfOffsetL = dart.constFn(tween.Tween$(T.OffsetL())))(),
+    CenterL: () => (T.CenterL = dart.constFn(dart.legacy(basic.Center)))(),
+    BuildContextLAndWidgetLToCenterL: () => (T.BuildContextLAndWidgetLToCenterL = dart.constFn(dart.fnType(T.CenterL(), [T.BuildContextL(), T.WidgetL()])))(),
+    PinAnimationTypeL: () => (T.PinAnimationTypeL = dart.constFn(dart.legacy(pin_put.PinAnimationType)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 85,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 84,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_leadingDistribution]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: null,
+        [TextStyle_fontSize]: null,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: null,
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: C[4] || CT.C4,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 7,
+        [_Location_line]: 103,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 7,
+        [_Location_line]: 104,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onSaved",
+        [_Location_column]: 7,
+        [_Location_line]: 105,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onChanged",
+        [_Location_column]: 7,
+        [_Location_line]: 106,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "validator",
+        [_Location_column]: 7,
+        [_Location_line]: 107,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "autovalidateMode",
+        [_Location_column]: 7,
+        [_Location_line]: 108,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textInputAction",
+        [_Location_column]: 7,
+        [_Location_line]: 109,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "focusNode",
+        [_Location_column]: 7,
+        [_Location_line]: 110,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enabled",
+        [_Location_column]: 7,
+        [_Location_line]: 111,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enableSuggestions",
+        [_Location_column]: 7,
+        [_Location_line]: 112,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "autofocus",
+        [_Location_column]: 7,
+        [_Location_line]: 113,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "obscureText",
+        [_Location_column]: 7,
+        [_Location_line]: 114,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "autocorrect",
+        [_Location_column]: 7,
+        [_Location_line]: 115,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "keyboardAppearance",
+        [_Location_column]: 7,
+        [_Location_line]: 116,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "keyboardType",
+        [_Location_column]: 7,
+        [_Location_line]: 117,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textCapitalization",
+        [_Location_column]: 7,
+        [_Location_line]: 118,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "inputFormatters",
+        [_Location_column]: 7,
+        [_Location_line]: 119,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enableInteractiveSelection",
+        [_Location_column]: 7,
+        [_Location_line]: 120,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "maxLength",
+        [_Location_column]: 7,
+        [_Location_line]: 121,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "showCursor",
+        [_Location_column]: 7,
+        [_Location_line]: 122,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollPadding",
+        [_Location_column]: 7,
+        [_Location_line]: 123,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 7,
+        [_Location_line]: 124,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 7,
+        [_Location_line]: 125,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14, C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23, C[24] || CT.C24, C[25] || CT.C25, C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29], T._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 102,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisSize",
+        [_Location_column]: 13,
+        [_Location_line]: 138,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 13,
+        [_Location_line]: 139,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 140,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.constList([C[32] || CT.C32, C[33] || CT.C33, C[34] || CT.C34], T._LocationL());
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[31] || CT.C31,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 137,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 11,
+        [_Location_line]: 136,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 137,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.constList([C[37] || CT.C37, C[38] || CT.C38], T._LocationL());
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[36] || CT.C36,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 135,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "valueListenable",
+        [_Location_column]: 7,
+        [_Location_line]: 133,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 134,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.constList([C[41] || CT.C41, C[42] || CT.C42], T._LocationL());
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[40] || CT.C40,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 132,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "switchInCurve",
+        [_Location_column]: 9,
+        [_Location_line]: 176,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "switchOutCurve",
+        [_Location_column]: 9,
+        [_Location_line]: 177,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 9,
+        [_Location_line]: 178,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "transitionBuilder",
+        [_Location_column]: 9,
+        [_Location_line]: 179,
+        [_Location_file]: null
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 182,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.constList([C[45] || CT.C45, C[46] || CT.C46, C[47] || CT.C47, C[48] || CT.C48, C[49] || CT.C49], T._LocationL());
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[44] || CT.C44,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 175,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 7,
+        [_Location_line]: 166,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 7,
+        [_Location_line]: 167,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 7,
+        [_Location_line]: 168,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 7,
+        [_Location_line]: 169,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 7,
+        [_Location_line]: 170,
+        [_Location_file]: null
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 171,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 7,
+        [_Location_line]: 172,
+        [_Location_file]: null
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 7,
+        [_Location_line]: 173,
+        [_Location_file]: null
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 7,
+        [_Location_line]: 174,
+        [_Location_file]: null
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 175,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.constList([C[52] || CT.C52, C[53] || CT.C53, C[54] || CT.C54, C[55] || CT.C55, C[56] || CT.C56, C[57] || CT.C57, C[58] || CT.C58, C[59] || CT.C59, C[60] || CT.C60, C[61] || CT.C61], T._LocationL());
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[51] || CT.C51,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 165,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 28,
+        [_Location_line]: 190,
+        [_Location_file]: null
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 9,
+        [_Location_line]: 191,
+        [_Location_file]: null
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 9,
+        [_Location_line]: 192,
+        [_Location_file]: null
+      });
+    },
+    get C63() {
+      return C[63] = dart.constList([C[64] || CT.C64, C[65] || CT.C65, C[66] || CT.C66], T._LocationL());
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[63] || CT.C63,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 189,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 9,
+        [_Location_line]: 201,
+        [_Location_file]: null
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 202,
+        [_Location_file]: null
+      });
+    },
+    get C68() {
+      return C[68] = dart.constList([C[69] || CT.C69, C[70] || CT.C70], T._LocationL());
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[68] || CT.C68,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 200,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 7,
+        [_Location_line]: 205,
+        [_Location_file]: null
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 7,
+        [_Location_line]: 206,
+        [_Location_file]: null
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 7,
+        [_Location_line]: 207,
+        [_Location_file]: null
+      });
+    },
+    get C72() {
+      return C[72] = dart.constList([C[73] || CT.C73, C[74] || CT.C74, C[75] || CT.C75], T._LocationL());
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[72] || CT.C72,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 204,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: pin_put.PinAnimationType.prototype,
+        [_name$]: "PinAnimationType.none",
+        index: 0
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 11,
+        [_Location_line]: 228,
+        [_Location_file]: null
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 229,
+        [_Location_file]: null
+      });
+    },
+    get C78() {
+      return C[78] = dart.constList([C[79] || CT.C79, C[80] || CT.C80], T._LocationL());
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[78] || CT.C78,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 227,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: pin_put.PinAnimationType.prototype,
+        [_name$]: "PinAnimationType.fade",
+        index: 2
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scale",
+        [_Location_column]: 11,
+        [_Location_line]: 233,
+        [_Location_file]: null
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 234,
+        [_Location_file]: null
+      });
+    },
+    get C83() {
+      return C[83] = dart.constList([C[84] || CT.C84, C[85] || CT.C85], T._LocationL());
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[83] || CT.C83,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 232,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: pin_put.PinAnimationType.prototype,
+        [_name$]: "PinAnimationType.scale",
+        index: 1
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "position",
+        [_Location_column]: 11,
+        [_Location_line]: 238,
+        [_Location_file]: null
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 242,
+        [_Location_file]: null
+      });
+    },
+    get C88() {
+      return C[88] = dart.constList([C[89] || CT.C89, C[90] || CT.C90], T._LocationL());
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[88] || CT.C88,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 237,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: pin_put.PinAnimationType.prototype,
+        [_name$]: "PinAnimationType.slide",
+        index: 3
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "turns",
+        [_Location_column]: 11,
+        [_Location_line]: 246,
+        [_Location_file]: null
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 247,
+        [_Location_file]: null
+      });
+    },
+    get C93() {
+      return C[93] = dart.constList([C[94] || CT.C94, C[95] || CT.C95], T._LocationL());
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[93] || CT.C93,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 245,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: pin_put.PinAnimationType.prototype,
+        [_name$]: "PinAnimationType.rotation",
+        index: 4
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 42,
+        [_Location_line]: 260,
+        [_Location_file]: null
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 47,
+        [_Location_line]: 260,
+        [_Location_file]: null
+      });
+    },
+    get C98() {
+      return C[98] = dart.constList([C[99] || CT.C99, C[100] || CT.C100], T._LocationL());
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[98] || CT.C98,
+        [_Location_name]: null,
+        [_Location_column]: 37,
+        [_Location_line]: 260,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 13,
+        [_Location_line]: 259,
+        [_Location_file]: null
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 260,
+        [_Location_file]: null
+      });
+    },
+    get C102() {
+      return C[102] = dart.constList([C[103] || CT.C103, C[104] || CT.C104], T._LocationL());
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[102] || CT.C102,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 258,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 258,
+        [_Location_file]: null
+      });
+    },
+    get C106() {
+      return C[106] = dart.constList([C[107] || CT.C107], T._LocationL());
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[106] || CT.C106,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 257,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 7,
+        [_Location_line]: 255,
+        [_Location_file]: null
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 256,
+        [_Location_file]: null
+      });
+    },
+    get C109() {
+      return C[109] = dart.constList([C[110] || CT.C110, C[111] || CT.C111], T._LocationL());
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[109] || CT.C109,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 254,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put_state.dart"
+      });
+    },
+    get C112() {
+      return C[112] = dart.constList([], T.intL());
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 37,
+        [_Location_line]: 18,
+        [_Location_file]: null
+      });
+    },
+    get C115() {
+      return C[115] = dart.constList([C[116] || CT.C116], T._LocationL());
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[115] || CT.C115,
+        [_Location_name]: null,
+        [_Location_column]: 28,
+        [_Location_line]: 18,
+        [_Location_file]: "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put.dart"
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: basic.SizedBox.prototype,
+        [Widget__location]: C[114] || CT.C114,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [SizedBox_height]: null,
+        [SizedBox_width]: 15
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: flex.MainAxisAlignment.prototype,
+        [_name]: "MainAxisAlignment.spaceBetween",
+        index: 3
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 0
+      });
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: box.BoxConstraints.prototype,
+        [BoxConstraints_maxHeight]: 1 / 0,
+        [BoxConstraints_minHeight]: 40,
+        [BoxConstraints_maxWidth]: 1 / 0,
+        [BoxConstraints_minWidth]: 40
+      });
+    },
+    get C123() {
+      return C[123] = dart.const({
+        __proto__: borders.BorderStyle.prototype,
+        [_name$0]: "BorderStyle.none",
+        index: 0
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C122() {
+      return C[122] = dart.const({
+        __proto__: borders.BorderSide.prototype,
+        [BorderSide_style]: C[123] || CT.C123,
+        [BorderSide_width]: 0,
+        [BorderSide_color]: C[124] || CT.C124
+      });
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: input_border._NoInputBorder.prototype,
+        [InputBorder_borderSide]: C[122] || CT.C122
+      });
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: input_decorator.InputDecoration.prototype,
+        [InputDecoration_alignLabelWithHint]: null,
+        [InputDecoration_semanticCounterText]: null,
+        [InputDecoration_enabled]: true,
+        [InputDecoration_border]: C[121] || CT.C121,
+        [InputDecoration_enabledBorder]: null,
+        [InputDecoration_disabledBorder]: null,
+        [InputDecoration_focusedErrorBorder]: null,
+        [InputDecoration_focusedBorder]: null,
+        [InputDecoration_errorBorder]: null,
+        [InputDecoration_hoverColor]: null,
+        [InputDecoration_focusColor]: null,
+        [InputDecoration_fillColor]: null,
+        [InputDecoration_filled]: null,
+        [InputDecoration_counterStyle]: null,
+        [InputDecoration_counter]: null,
+        [InputDecoration_counterText]: "",
+        [InputDecoration_suffixIconConstraints]: null,
+        [InputDecoration_suffixStyle]: null,
+        [InputDecoration_suffixText]: null,
+        [InputDecoration_suffix]: null,
+        [InputDecoration_suffixIcon]: null,
+        [InputDecoration_prefixStyle]: null,
+        [InputDecoration_prefixText]: null,
+        [InputDecoration_prefix]: null,
+        [InputDecoration_prefixIconConstraints]: null,
+        [InputDecoration_prefixIcon]: null,
+        [InputDecoration_isCollapsed]: false,
+        [InputDecoration_contentPadding]: C[125] || CT.C125,
+        [InputDecoration_isDense]: null,
+        [InputDecoration_floatingLabelBehavior]: null,
+        [InputDecoration_hasFloatingPlaceholder]: true,
+        [InputDecoration_errorMaxLines]: null,
+        [InputDecoration_errorStyle]: null,
+        [InputDecoration_errorText]: null,
+        [InputDecoration_hintMaxLines]: null,
+        [InputDecoration_hintTextDirection]: null,
+        [InputDecoration_hintStyle]: null,
+        [InputDecoration_hintText]: null,
+        [InputDecoration_helperMaxLines]: null,
+        [InputDecoration_helperStyle]: null,
+        [InputDecoration_helperText]: null,
+        [InputDecoration_labelStyle]: null,
+        [InputDecoration_labelText]: null,
+        [InputDecoration_icon]: null
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: curves._Linear.prototype
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 160000
+      });
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: form.AutovalidateMode.prototype,
+        [_name$1]: "AutovalidateMode.disabled",
+        index: 0
+      });
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: text_input.TextInputType.prototype,
+        [TextInputType_decimal]: false,
+        [TextInputType_signed]: false,
+        [TextInputType_index]: 2
+      });
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: text_input.TextCapitalization.prototype,
+        [_name$2]: "TextCapitalization.none",
+        index: 3
+      });
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: flex.MainAxisSize.prototype,
+        [_name]: "MainAxisSize.max",
+        index: 1
+      });
+    },
+    get C132() {
+      return C[132] = dart.constList([C[76] || CT.C76, C[86] || CT.C86, C[81] || CT.C81, C[91] || CT.C91, C[96] || CT.C96], T.PinAnimationTypeL());
+    }
+  }, false);
+  var C = Array(133).fill(void 0);
+  var I = [
+    "file:///C:/Users/Sampa/Downloads/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-0.2.6/lib/pin_put/pin_put.dart",
+    "package:pinput/pin_put/pin_put.dart",
+    "package:pinput/pin_put/pin_put_state.dart"
+  ];
+  var _controller = dart.privateName(pin_put_state, "_controller");
+  var _focusNode = dart.privateName(pin_put_state, "_focusNode");
+  var _textControllerValue = dart.privateName(pin_put_state, "_textControllerValue");
+  var _cursorAnimation = dart.privateName(pin_put_state, "_cursorAnimation");
+  var _cursorAnimationController = dart.privateName(pin_put_state, "_cursorAnimationController");
+  var _textChangeListener = dart.privateName(pin_put_state, "_textChangeListener");
+  var _checkClipboard = dart.privateName(pin_put_state, "_checkClipboard");
+  var _hiddenTextField = dart.privateName(pin_put_state, "_hiddenTextField");
+  var _fields = dart.privateName(pin_put_state, "_fields");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _handleTap = dart.privateName(pin_put_state, "_handleTap");
+  var TextStyle_fontFeatures = dart.privateName(text_style, "TextStyle.fontFeatures");
+  var TextStyle_shadows = dart.privateName(text_style, "TextStyle.shadows");
+  var TextStyle_debugLabel = dart.privateName(text_style, "TextStyle.debugLabel");
+  var TextStyle_decorationThickness = dart.privateName(text_style, "TextStyle.decorationThickness");
+  var TextStyle_decorationStyle = dart.privateName(text_style, "TextStyle.decorationStyle");
+  var TextStyle_decorationColor = dart.privateName(text_style, "TextStyle.decorationColor");
+  var TextStyle_decoration = dart.privateName(text_style, "TextStyle.decoration");
+  var TextStyle_background = dart.privateName(text_style, "TextStyle.background");
+  var TextStyle_foreground = dart.privateName(text_style, "TextStyle.foreground");
+  var TextStyle_locale = dart.privateName(text_style, "TextStyle.locale");
+  var TextStyle_leadingDistribution = dart.privateName(text_style, "TextStyle.leadingDistribution");
+  var TextStyle_height = dart.privateName(text_style, "TextStyle.height");
+  var TextStyle_textBaseline = dart.privateName(text_style, "TextStyle.textBaseline");
+  var TextStyle_wordSpacing = dart.privateName(text_style, "TextStyle.wordSpacing");
+  var TextStyle_letterSpacing = dart.privateName(text_style, "TextStyle.letterSpacing");
+  var TextStyle_fontStyle = dart.privateName(text_style, "TextStyle.fontStyle");
+  var TextStyle_fontWeight = dart.privateName(text_style, "TextStyle.fontWeight");
+  var TextStyle_fontSize = dart.privateName(text_style, "TextStyle.fontSize");
+  var TextStyle__package = dart.privateName(text_style, "TextStyle._package");
+  var TextStyle__fontFamilyFallback = dart.privateName(text_style, "TextStyle._fontFamilyFallback");
+  var TextStyle_fontFamily = dart.privateName(text_style, "TextStyle.fontFamily");
+  var TextStyle_backgroundColor = dart.privateName(text_style, "TextStyle.backgroundColor");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var TextStyle_color = dart.privateName(text_style, "TextStyle.color");
+  var TextStyle_inherit = dart.privateName(text_style, "TextStyle.inherit");
+  var _buildFieldsWithSeparator = dart.privateName(pin_put_state, "_buildFieldsWithSeparator");
+  var _getField = dart.privateName(pin_put_state, "_getField");
+  var _fieldDecoration = dart.privateName(pin_put_state, "_fieldDecoration");
+  var _getTransition = dart.privateName(pin_put_state, "_getTransition");
+  var _buildFieldContent = dart.privateName(pin_put_state, "_buildFieldContent");
+  var _buildCursor = dart.privateName(pin_put_state, "_buildCursor");
+  var _name$ = dart.privateName(pin_put, "_name");
+  var fieldsCount$ = dart.privateName(pin_put, "PinPut.fieldsCount");
+  var onSubmit$ = dart.privateName(pin_put, "PinPut.onSubmit");
+  var onSaved$ = dart.privateName(pin_put, "PinPut.onSaved");
+  var onChanged$ = dart.privateName(pin_put, "PinPut.onChanged");
+  var onTap$ = dart.privateName(pin_put, "PinPut.onTap");
+  var onClipboardFound$ = dart.privateName(pin_put, "PinPut.onClipboardFound");
+  var controller$ = dart.privateName(pin_put, "PinPut.controller");
+  var focusNode$ = dart.privateName(pin_put, "PinPut.focusNode");
+  var preFilledWidget$ = dart.privateName(pin_put, "PinPut.preFilledWidget");
+  var separatorPositions$ = dart.privateName(pin_put, "PinPut.separatorPositions");
+  var separator$ = dart.privateName(pin_put, "PinPut.separator");
+  var textStyle$ = dart.privateName(pin_put, "PinPut.textStyle");
+  var submittedFieldDecoration$ = dart.privateName(pin_put, "PinPut.submittedFieldDecoration");
+  var selectedFieldDecoration$ = dart.privateName(pin_put, "PinPut.selectedFieldDecoration");
+  var followingFieldDecoration$ = dart.privateName(pin_put, "PinPut.followingFieldDecoration");
+  var disabledDecoration$ = dart.privateName(pin_put, "PinPut.disabledDecoration");
+  var eachFieldWidth$ = dart.privateName(pin_put, "PinPut.eachFieldWidth");
+  var eachFieldHeight$ = dart.privateName(pin_put, "PinPut.eachFieldHeight");
+  var fieldsAlignment$ = dart.privateName(pin_put, "PinPut.fieldsAlignment");
+  var eachFieldAlignment$ = dart.privateName(pin_put, "PinPut.eachFieldAlignment");
+  var eachFieldMargin$ = dart.privateName(pin_put, "PinPut.eachFieldMargin");
+  var eachFieldPadding$ = dart.privateName(pin_put, "PinPut.eachFieldPadding");
+  var eachFieldConstraints$ = dart.privateName(pin_put, "PinPut.eachFieldConstraints");
+  var inputDecoration$ = dart.privateName(pin_put, "PinPut.inputDecoration");
+  var animationCurve$ = dart.privateName(pin_put, "PinPut.animationCurve");
+  var animationDuration$ = dart.privateName(pin_put, "PinPut.animationDuration");
+  var pinAnimationType$ = dart.privateName(pin_put, "PinPut.pinAnimationType");
+  var slideTransitionBeginOffset$ = dart.privateName(pin_put, "PinPut.slideTransitionBeginOffset");
+  var enabled$ = dart.privateName(pin_put, "PinPut.enabled");
+  var autofocus$ = dart.privateName(pin_put, "PinPut.autofocus");
+  var autovalidateMode$ = dart.privateName(pin_put, "PinPut.autovalidateMode");
+  var withCursor$ = dart.privateName(pin_put, "PinPut.withCursor");
+  var cursor$ = dart.privateName(pin_put, "PinPut.cursor");
+  var keyboardAppearance$ = dart.privateName(pin_put, "PinPut.keyboardAppearance");
+  var inputFormatters$ = dart.privateName(pin_put, "PinPut.inputFormatters");
+  var validator$ = dart.privateName(pin_put, "PinPut.validator");
+  var keyboardType$ = dart.privateName(pin_put, "PinPut.keyboardType");
+  var obscureText$ = dart.privateName(pin_put, "PinPut.obscureText");
+  var textCapitalization$ = dart.privateName(pin_put, "PinPut.textCapitalization");
+  var textInputAction$ = dart.privateName(pin_put, "PinPut.textInputAction");
+  var toolbarOptions$ = dart.privateName(pin_put, "PinPut.toolbarOptions");
+  var mainAxisSize$ = dart.privateName(pin_put, "PinPut.mainAxisSize");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
+  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  var _name = dart.privateName(flex, "_name");
+  var Alignment_y = dart.privateName(alignment, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment, "Alignment.x");
+  var BoxConstraints_maxHeight = dart.privateName(box, "BoxConstraints.maxHeight");
+  var BoxConstraints_minHeight = dart.privateName(box, "BoxConstraints.minHeight");
+  var BoxConstraints_maxWidth = dart.privateName(box, "BoxConstraints.maxWidth");
+  var BoxConstraints_minWidth = dart.privateName(box, "BoxConstraints.minWidth");
+  var InputDecoration_alignLabelWithHint = dart.privateName(input_decorator, "InputDecoration.alignLabelWithHint");
+  var InputDecoration_semanticCounterText = dart.privateName(input_decorator, "InputDecoration.semanticCounterText");
+  var InputDecoration_enabled = dart.privateName(input_decorator, "InputDecoration.enabled");
+  var _name$0 = dart.privateName(borders, "_name");
+  var BorderSide_style = dart.privateName(borders, "BorderSide.style");
+  var BorderSide_width = dart.privateName(borders, "BorderSide.width");
+  var BorderSide_color = dart.privateName(borders, "BorderSide.color");
+  var InputBorder_borderSide = dart.privateName(input_border, "InputBorder.borderSide");
+  var InputDecoration_border = dart.privateName(input_decorator, "InputDecoration.border");
+  var InputDecoration_enabledBorder = dart.privateName(input_decorator, "InputDecoration.enabledBorder");
+  var InputDecoration_disabledBorder = dart.privateName(input_decorator, "InputDecoration.disabledBorder");
+  var InputDecoration_focusedErrorBorder = dart.privateName(input_decorator, "InputDecoration.focusedErrorBorder");
+  var InputDecoration_focusedBorder = dart.privateName(input_decorator, "InputDecoration.focusedBorder");
+  var InputDecoration_errorBorder = dart.privateName(input_decorator, "InputDecoration.errorBorder");
+  var InputDecoration_hoverColor = dart.privateName(input_decorator, "InputDecoration.hoverColor");
+  var InputDecoration_focusColor = dart.privateName(input_decorator, "InputDecoration.focusColor");
+  var InputDecoration_fillColor = dart.privateName(input_decorator, "InputDecoration.fillColor");
+  var InputDecoration_filled = dart.privateName(input_decorator, "InputDecoration.filled");
+  var InputDecoration_counterStyle = dart.privateName(input_decorator, "InputDecoration.counterStyle");
+  var InputDecoration_counter = dart.privateName(input_decorator, "InputDecoration.counter");
+  var InputDecoration_counterText = dart.privateName(input_decorator, "InputDecoration.counterText");
+  var InputDecoration_suffixIconConstraints = dart.privateName(input_decorator, "InputDecoration.suffixIconConstraints");
+  var InputDecoration_suffixStyle = dart.privateName(input_decorator, "InputDecoration.suffixStyle");
+  var InputDecoration_suffixText = dart.privateName(input_decorator, "InputDecoration.suffixText");
+  var InputDecoration_suffix = dart.privateName(input_decorator, "InputDecoration.suffix");
+  var InputDecoration_suffixIcon = dart.privateName(input_decorator, "InputDecoration.suffixIcon");
+  var InputDecoration_prefixStyle = dart.privateName(input_decorator, "InputDecoration.prefixStyle");
+  var InputDecoration_prefixText = dart.privateName(input_decorator, "InputDecoration.prefixText");
+  var InputDecoration_prefix = dart.privateName(input_decorator, "InputDecoration.prefix");
+  var InputDecoration_prefixIconConstraints = dart.privateName(input_decorator, "InputDecoration.prefixIconConstraints");
+  var InputDecoration_prefixIcon = dart.privateName(input_decorator, "InputDecoration.prefixIcon");
+  var InputDecoration_isCollapsed = dart.privateName(input_decorator, "InputDecoration.isCollapsed");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var InputDecoration_contentPadding = dart.privateName(input_decorator, "InputDecoration.contentPadding");
+  var InputDecoration_isDense = dart.privateName(input_decorator, "InputDecoration.isDense");
+  var InputDecoration_floatingLabelBehavior = dart.privateName(input_decorator, "InputDecoration.floatingLabelBehavior");
+  var InputDecoration_hasFloatingPlaceholder = dart.privateName(input_decorator, "InputDecoration.hasFloatingPlaceholder");
+  var InputDecoration_errorMaxLines = dart.privateName(input_decorator, "InputDecoration.errorMaxLines");
+  var InputDecoration_errorStyle = dart.privateName(input_decorator, "InputDecoration.errorStyle");
+  var InputDecoration_errorText = dart.privateName(input_decorator, "InputDecoration.errorText");
+  var InputDecoration_hintMaxLines = dart.privateName(input_decorator, "InputDecoration.hintMaxLines");
+  var InputDecoration_hintTextDirection = dart.privateName(input_decorator, "InputDecoration.hintTextDirection");
+  var InputDecoration_hintStyle = dart.privateName(input_decorator, "InputDecoration.hintStyle");
+  var InputDecoration_hintText = dart.privateName(input_decorator, "InputDecoration.hintText");
+  var InputDecoration_helperMaxLines = dart.privateName(input_decorator, "InputDecoration.helperMaxLines");
+  var InputDecoration_helperStyle = dart.privateName(input_decorator, "InputDecoration.helperStyle");
+  var InputDecoration_helperText = dart.privateName(input_decorator, "InputDecoration.helperText");
+  var InputDecoration_labelStyle = dart.privateName(input_decorator, "InputDecoration.labelStyle");
+  var InputDecoration_labelText = dart.privateName(input_decorator, "InputDecoration.labelText");
+  var InputDecoration_icon = dart.privateName(input_decorator, "InputDecoration.icon");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _name$1 = dart.privateName(form, "_name");
+  var TextInputType_decimal = dart.privateName(text_input, "TextInputType.decimal");
+  var TextInputType_signed = dart.privateName(text_input, "TextInputType.signed");
+  var TextInputType_index = dart.privateName(text_input, "TextInputType.index");
+  var _name$2 = dart.privateName(text_input, "_name");
+  pin_put.PinPut = class PinPut extends framework.StatefulWidget {
+    get fieldsCount() {
+      return this[fieldsCount$];
+    }
+    set fieldsCount(value) {
+      super.fieldsCount = value;
+    }
+    get onSubmit() {
+      return this[onSubmit$];
+    }
+    set onSubmit(value) {
+      super.onSubmit = value;
+    }
+    get onSaved() {
+      return this[onSaved$];
+    }
+    set onSaved(value) {
+      super.onSaved = value;
+    }
+    get onChanged() {
+      return this[onChanged$];
+    }
+    set onChanged(value) {
+      super.onChanged = value;
+    }
+    get onTap() {
+      return this[onTap$];
+    }
+    set onTap(value) {
+      super.onTap = value;
+    }
+    get onClipboardFound() {
+      return this[onClipboardFound$];
+    }
+    set onClipboardFound(value) {
+      super.onClipboardFound = value;
+    }
+    get controller() {
+      return this[controller$];
+    }
+    set controller(value) {
+      super.controller = value;
+    }
+    get focusNode() {
+      return this[focusNode$];
+    }
+    set focusNode(value) {
+      super.focusNode = value;
+    }
+    get preFilledWidget() {
+      return this[preFilledWidget$];
+    }
+    set preFilledWidget(value) {
+      super.preFilledWidget = value;
+    }
+    get separatorPositions() {
+      return this[separatorPositions$];
+    }
+    set separatorPositions(value) {
+      super.separatorPositions = value;
+    }
+    get separator() {
+      return this[separator$];
+    }
+    set separator(value) {
+      super.separator = value;
+    }
+    get textStyle() {
+      return this[textStyle$];
+    }
+    set textStyle(value) {
+      super.textStyle = value;
+    }
+    get submittedFieldDecoration() {
+      return this[submittedFieldDecoration$];
+    }
+    set submittedFieldDecoration(value) {
+      super.submittedFieldDecoration = value;
+    }
+    get selectedFieldDecoration() {
+      return this[selectedFieldDecoration$];
+    }
+    set selectedFieldDecoration(value) {
+      super.selectedFieldDecoration = value;
+    }
+    get followingFieldDecoration() {
+      return this[followingFieldDecoration$];
+    }
+    set followingFieldDecoration(value) {
+      super.followingFieldDecoration = value;
+    }
+    get disabledDecoration() {
+      return this[disabledDecoration$];
+    }
+    set disabledDecoration(value) {
+      super.disabledDecoration = value;
+    }
+    get eachFieldWidth() {
+      return this[eachFieldWidth$];
+    }
+    set eachFieldWidth(value) {
+      super.eachFieldWidth = value;
+    }
+    get eachFieldHeight() {
+      return this[eachFieldHeight$];
+    }
+    set eachFieldHeight(value) {
+      super.eachFieldHeight = value;
+    }
+    get fieldsAlignment() {
+      return this[fieldsAlignment$];
+    }
+    set fieldsAlignment(value) {
+      super.fieldsAlignment = value;
+    }
+    get eachFieldAlignment() {
+      return this[eachFieldAlignment$];
+    }
+    set eachFieldAlignment(value) {
+      super.eachFieldAlignment = value;
+    }
+    get eachFieldMargin() {
+      return this[eachFieldMargin$];
+    }
+    set eachFieldMargin(value) {
+      super.eachFieldMargin = value;
+    }
+    get eachFieldPadding() {
+      return this[eachFieldPadding$];
+    }
+    set eachFieldPadding(value) {
+      super.eachFieldPadding = value;
+    }
+    get eachFieldConstraints() {
+      return this[eachFieldConstraints$];
+    }
+    set eachFieldConstraints(value) {
+      super.eachFieldConstraints = value;
+    }
+    get inputDecoration() {
+      return this[inputDecoration$];
+    }
+    set inputDecoration(value) {
+      super.inputDecoration = value;
+    }
+    get animationCurve() {
+      return this[animationCurve$];
+    }
+    set animationCurve(value) {
+      super.animationCurve = value;
+    }
+    get animationDuration() {
+      return this[animationDuration$];
+    }
+    set animationDuration(value) {
+      super.animationDuration = value;
+    }
+    get pinAnimationType() {
+      return this[pinAnimationType$];
+    }
+    set pinAnimationType(value) {
+      super.pinAnimationType = value;
+    }
+    get slideTransitionBeginOffset() {
+      return this[slideTransitionBeginOffset$];
+    }
+    set slideTransitionBeginOffset(value) {
+      super.slideTransitionBeginOffset = value;
+    }
+    get enabled() {
+      return this[enabled$];
+    }
+    set enabled(value) {
+      super.enabled = value;
+    }
+    get autofocus() {
+      return this[autofocus$];
+    }
+    set autofocus(value) {
+      super.autofocus = value;
+    }
+    get autovalidateMode() {
+      return this[autovalidateMode$];
+    }
+    set autovalidateMode(value) {
+      super.autovalidateMode = value;
+    }
+    get withCursor() {
+      return this[withCursor$];
+    }
+    set withCursor(value) {
+      super.withCursor = value;
+    }
+    get cursor() {
+      return this[cursor$];
+    }
+    set cursor(value) {
+      super.cursor = value;
+    }
+    get keyboardAppearance() {
+      return this[keyboardAppearance$];
+    }
+    set keyboardAppearance(value) {
+      super.keyboardAppearance = value;
+    }
+    get inputFormatters() {
+      return this[inputFormatters$];
+    }
+    set inputFormatters(value) {
+      super.inputFormatters = value;
+    }
+    get validator() {
+      return this[validator$];
+    }
+    set validator(value) {
+      super.validator = value;
+    }
+    get keyboardType() {
+      return this[keyboardType$];
+    }
+    set keyboardType(value) {
+      super.keyboardType = value;
+    }
+    get obscureText() {
+      return this[obscureText$];
+    }
+    set obscureText(value) {
+      super.obscureText = value;
+    }
+    get textCapitalization() {
+      return this[textCapitalization$];
+    }
+    set textCapitalization(value) {
+      super.textCapitalization = value;
+    }
+    get textInputAction() {
+      return this[textInputAction$];
+    }
+    set textInputAction(value) {
+      super.textInputAction = value;
+    }
+    get toolbarOptions() {
+      return this[toolbarOptions$];
+    }
+    set toolbarOptions(value) {
+      super.toolbarOptions = value;
+    }
+    get mainAxisSize() {
+      return this[mainAxisSize$];
+    }
+    set mainAxisSize(value) {
+      super.mainAxisSize = value;
+    }
+    createState() {
+      return new pin_put_state.PinPutState.new();
+    }
+  };
+  (pin_put.PinPut.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let fieldsCount = opts && 'fieldsCount' in opts ? opts.fieldsCount : null;
+    let onSubmit = opts && 'onSubmit' in opts ? opts.onSubmit : null;
+    let onSaved = opts && 'onSaved' in opts ? opts.onSaved : null;
+    let onChanged = opts && 'onChanged' in opts ? opts.onChanged : null;
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let onClipboardFound = opts && 'onClipboardFound' in opts ? opts.onClipboardFound : null;
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    let focusNode = opts && 'focusNode' in opts ? opts.focusNode : null;
+    let preFilledWidget = opts && 'preFilledWidget' in opts ? opts.preFilledWidget : null;
+    let separatorPositions = opts && 'separatorPositions' in opts ? opts.separatorPositions : C[112] || CT.C112;
+    let separator = opts && 'separator' in opts ? opts.separator : C[113] || CT.C113;
+    let textStyle = opts && 'textStyle' in opts ? opts.textStyle : null;
+    let submittedFieldDecoration = opts && 'submittedFieldDecoration' in opts ? opts.submittedFieldDecoration : null;
+    let selectedFieldDecoration = opts && 'selectedFieldDecoration' in opts ? opts.selectedFieldDecoration : null;
+    let followingFieldDecoration = opts && 'followingFieldDecoration' in opts ? opts.followingFieldDecoration : null;
+    let disabledDecoration = opts && 'disabledDecoration' in opts ? opts.disabledDecoration : null;
+    let eachFieldWidth = opts && 'eachFieldWidth' in opts ? opts.eachFieldWidth : null;
+    let eachFieldHeight = opts && 'eachFieldHeight' in opts ? opts.eachFieldHeight : null;
+    let fieldsAlignment = opts && 'fieldsAlignment' in opts ? opts.fieldsAlignment : C[117] || CT.C117;
+    let eachFieldAlignment = opts && 'eachFieldAlignment' in opts ? opts.eachFieldAlignment : C[118] || CT.C118;
+    let eachFieldMargin = opts && 'eachFieldMargin' in opts ? opts.eachFieldMargin : null;
+    let eachFieldPadding = opts && 'eachFieldPadding' in opts ? opts.eachFieldPadding : null;
+    let eachFieldConstraints = opts && 'eachFieldConstraints' in opts ? opts.eachFieldConstraints : C[119] || CT.C119;
+    let inputDecoration = opts && 'inputDecoration' in opts ? opts.inputDecoration : C[120] || CT.C120;
+    let animationCurve = opts && 'animationCurve' in opts ? opts.animationCurve : C[126] || CT.C126;
+    let animationDuration = opts && 'animationDuration' in opts ? opts.animationDuration : C[127] || CT.C127;
+    let pinAnimationType = opts && 'pinAnimationType' in opts ? opts.pinAnimationType : C[91] || CT.C91;
+    let slideTransitionBeginOffset = opts && 'slideTransitionBeginOffset' in opts ? opts.slideTransitionBeginOffset : null;
+    let enabled = opts && 'enabled' in opts ? opts.enabled : true;
+    let autofocus = opts && 'autofocus' in opts ? opts.autofocus : false;
+    let autovalidateMode = opts && 'autovalidateMode' in opts ? opts.autovalidateMode : C[128] || CT.C128;
+    let withCursor = opts && 'withCursor' in opts ? opts.withCursor : false;
+    let cursor = opts && 'cursor' in opts ? opts.cursor : null;
+    let keyboardAppearance = opts && 'keyboardAppearance' in opts ? opts.keyboardAppearance : null;
+    let inputFormatters = opts && 'inputFormatters' in opts ? opts.inputFormatters : null;
+    let validator = opts && 'validator' in opts ? opts.validator : null;
+    let keyboardType = opts && 'keyboardType' in opts ? opts.keyboardType : C[129] || CT.C129;
+    let obscureText = opts && 'obscureText' in opts ? opts.obscureText : null;
+    let textCapitalization = opts && 'textCapitalization' in opts ? opts.textCapitalization : C[130] || CT.C130;
+    let textInputAction = opts && 'textInputAction' in opts ? opts.textInputAction : null;
+    let toolbarOptions = opts && 'toolbarOptions' in opts ? opts.toolbarOptions : null;
+    let mainAxisSize = opts && 'mainAxisSize' in opts ? opts.mainAxisSize : C[131] || CT.C131;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[fieldsCount$] = fieldsCount;
+    this[onSubmit$] = onSubmit;
+    this[onSaved$] = onSaved;
+    this[onChanged$] = onChanged;
+    this[onTap$] = onTap;
+    this[onClipboardFound$] = onClipboardFound;
+    this[controller$] = controller;
+    this[focusNode$] = focusNode;
+    this[preFilledWidget$] = preFilledWidget;
+    this[separatorPositions$] = separatorPositions;
+    this[separator$] = separator;
+    this[textStyle$] = textStyle;
+    this[submittedFieldDecoration$] = submittedFieldDecoration;
+    this[selectedFieldDecoration$] = selectedFieldDecoration;
+    this[followingFieldDecoration$] = followingFieldDecoration;
+    this[disabledDecoration$] = disabledDecoration;
+    this[eachFieldWidth$] = eachFieldWidth;
+    this[eachFieldHeight$] = eachFieldHeight;
+    this[fieldsAlignment$] = fieldsAlignment;
+    this[eachFieldAlignment$] = eachFieldAlignment;
+    this[eachFieldMargin$] = eachFieldMargin;
+    this[eachFieldPadding$] = eachFieldPadding;
+    this[eachFieldConstraints$] = eachFieldConstraints;
+    this[inputDecoration$] = inputDecoration;
+    this[animationCurve$] = animationCurve;
+    this[animationDuration$] = animationDuration;
+    this[pinAnimationType$] = pinAnimationType;
+    this[slideTransitionBeginOffset$] = slideTransitionBeginOffset;
+    this[enabled$] = enabled;
+    this[autofocus$] = autofocus;
+    this[autovalidateMode$] = autovalidateMode;
+    this[withCursor$] = withCursor;
+    this[cursor$] = cursor;
+    this[keyboardAppearance$] = keyboardAppearance;
+    this[inputFormatters$] = inputFormatters;
+    this[validator$] = validator;
+    this[keyboardType$] = keyboardType;
+    this[obscureText$] = obscureText;
+    this[textCapitalization$] = textCapitalization;
+    this[textInputAction$] = textInputAction;
+    this[toolbarOptions$] = toolbarOptions;
+    this[mainAxisSize$] = mainAxisSize;
+    if (!(dart.notNull(fieldsCount) > 0)) dart.assertFailed(null, I[0], 55, 16, "fieldsCount > 0");
+    pin_put.PinPut.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = pin_put.PinPut.prototype;
+  dart.addTypeTests(pin_put.PinPut);
+  dart.addTypeCaches(pin_put.PinPut);
+  dart.setMethodSignature(pin_put.PinPut, () => ({
+    __proto__: dart.getMethods(pin_put.PinPut.__proto__),
+    createState: dart.fnType(dart.legacy(pin_put_state.PinPutState), [])
+  }));
+  dart.setLibraryUri(pin_put.PinPut, I[1]);
+  dart.setFieldSignature(pin_put.PinPut, () => ({
+    __proto__: dart.getFields(pin_put.PinPut.__proto__),
+    fieldsCount: dart.finalFieldType(dart.legacy(core.int)),
+    onSubmit: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
+    onSaved: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
+    onChanged: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
+    onTap: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, []))),
+    onClipboardFound: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
+    controller: dart.finalFieldType(dart.legacy(editable_text.TextEditingController)),
+    focusNode: dart.finalFieldType(dart.legacy(focus_manager.FocusNode)),
+    preFilledWidget: dart.finalFieldType(dart.legacy(framework.Widget)),
+    separatorPositions: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(core.int)))),
+    separator: dart.finalFieldType(dart.legacy(framework.Widget)),
+    textStyle: dart.finalFieldType(dart.legacy(text_style.TextStyle)),
+    submittedFieldDecoration: dart.finalFieldType(dart.legacy(box_decoration.BoxDecoration)),
+    selectedFieldDecoration: dart.finalFieldType(dart.legacy(box_decoration.BoxDecoration)),
+    followingFieldDecoration: dart.finalFieldType(dart.legacy(box_decoration.BoxDecoration)),
+    disabledDecoration: dart.finalFieldType(dart.legacy(box_decoration.BoxDecoration)),
+    eachFieldWidth: dart.finalFieldType(dart.legacy(core.double)),
+    eachFieldHeight: dart.finalFieldType(dart.legacy(core.double)),
+    fieldsAlignment: dart.finalFieldType(dart.legacy(flex.MainAxisAlignment)),
+    eachFieldAlignment: dart.finalFieldType(dart.legacy(alignment.AlignmentGeometry)),
+    eachFieldMargin: dart.finalFieldType(dart.legacy(edge_insets.EdgeInsetsGeometry)),
+    eachFieldPadding: dart.finalFieldType(dart.legacy(edge_insets.EdgeInsetsGeometry)),
+    eachFieldConstraints: dart.finalFieldType(dart.legacy(box.BoxConstraints)),
+    inputDecoration: dart.finalFieldType(dart.legacy(input_decorator.InputDecoration)),
+    animationCurve: dart.finalFieldType(dart.legacy(curves.Curve)),
+    animationDuration: dart.finalFieldType(dart.legacy(core.Duration)),
+    pinAnimationType: dart.finalFieldType(dart.legacy(pin_put.PinAnimationType)),
+    slideTransitionBeginOffset: dart.finalFieldType(dart.legacy(ui.Offset)),
+    enabled: dart.finalFieldType(dart.legacy(core.bool)),
+    autofocus: dart.finalFieldType(dart.legacy(core.bool)),
+    autovalidateMode: dart.finalFieldType(dart.legacy(form.AutovalidateMode)),
+    withCursor: dart.finalFieldType(dart.legacy(core.bool)),
+    cursor: dart.finalFieldType(dart.legacy(framework.Widget)),
+    keyboardAppearance: dart.finalFieldType(dart.legacy(ui.Brightness)),
+    inputFormatters: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(text_formatter.TextInputFormatter)))),
+    validator: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(core.String), [dart.legacy(core.String)]))),
+    keyboardType: dart.finalFieldType(dart.legacy(text_input.TextInputType)),
+    obscureText: dart.finalFieldType(dart.legacy(core.String)),
+    textCapitalization: dart.finalFieldType(dart.legacy(text_input.TextCapitalization)),
+    textInputAction: dart.finalFieldType(dart.legacy(text_input.TextInputAction)),
+    toolbarOptions: dart.finalFieldType(dart.legacy(editable_text.ToolbarOptions)),
+    mainAxisSize: dart.finalFieldType(dart.legacy(flex.MainAxisSize))
+  }));
+  const State_WidgetsBindingObserver$36 = class State_WidgetsBindingObserver extends framework.State$(dart.legacy(pin_put.PinPut)) {};
+  (State_WidgetsBindingObserver$36.new = function() {
+    State_WidgetsBindingObserver$36.__proto__.new.call(this);
+  }).prototype = State_WidgetsBindingObserver$36.prototype;
+  dart.applyMixin(State_WidgetsBindingObserver$36, binding.WidgetsBindingObserver);
+  const State_SingleTickerProviderStateMixin$36 = class State_SingleTickerProviderStateMixin extends State_WidgetsBindingObserver$36 {};
+  (State_SingleTickerProviderStateMixin$36.new = function() {
+    ticker_provider.SingleTickerProviderStateMixin$(dart.legacy(pin_put.PinPut))[dart.mixinNew].call(this);
+    State_SingleTickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_SingleTickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_SingleTickerProviderStateMixin$36, ticker_provider.SingleTickerProviderStateMixin$(dart.legacy(pin_put.PinPut)));
+  pin_put_state.PinPutState = class PinPutState extends State_SingleTickerProviderStateMixin$36 {
+    get selectedIndex() {
+      return this[_controller].value.text.length;
+    }
+    initState() {
+      let t0, t0$, t0$0, t0$1;
+      this[_controller] = (t0 = this.widget.controller, t0 == null ? new editable_text.TextEditingController.new() : t0);
+      this[_focusNode] = (t0$ = this.widget.focusNode, t0$ == null ? new focus_manager.FocusNode.new() : t0$);
+      this[_textControllerValue] = new (T.ValueNotifierOfStringL()).new(this[_controller].value.text);
+      t0$0 = this[_controller];
+      t0$0 == null ? null : t0$0.addListener(dart.bind(this, _textChangeListener));
+      t0$1 = this[_focusNode];
+      t0$1 == null ? null : t0$1.addListener(dart.fn(() => {
+        if (dart.test(this.mounted)) this.setState(dart.fn(() => {
+        }, T.VoidToNull()));
+      }, T.VoidToNull()));
+      if (dart.test(this.widget.withCursor)) {
+        this[_cursorAnimationController] = new animation_controller.AnimationController.new({vsync: this, duration: new core.Duration.new({milliseconds: 500})});
+        this[_cursorAnimation] = new (T.TweenOfdoubleL()).new({begin: 0.0, end: 1.0}).animate(new animations.CurvedAnimation.new({curve: curves.Curves.linear, parent: this[_cursorAnimationController]}));
+        this[_cursorAnimationController].addStatusListener(dart.fn(status => {
+          if (status == animation.AnimationStatus.completed) {
+            this[_cursorAnimationController].repeat({reverse: true});
+          }
+        }, T.AnimationStatusLToNull()));
+        this[_cursorAnimationController].forward();
+      }
+      binding.WidgetsBinding.instance.addObserver(this);
+      super.initState();
+    }
+    [_textChangeListener]() {
+      let t0, t1;
+      let pin = this[_controller].value.text;
+      t0 = this.widget.onChanged;
+      t0 == null ? null : t0(pin);
+      if (pin != this[_textControllerValue].value) {
+        try {
+          this[_textControllerValue].value = pin;
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          this[_textControllerValue] = new (T.ValueNotifierOfStringL()).new(this[_controller].value.text);
+        }
+        if (pin.length === this.widget.fieldsCount) {
+          t1 = this.widget.onSubmit;
+          t1 == null ? null : t1(pin);
+        }
+      }
+    }
+    dispose() {
+      let t1, t1$;
+      if (this.widget.controller == null) this[_controller].dispose();
+      if (this.widget.focusNode == null) this[_focusNode].dispose();
+      t1 = this[_cursorAnimationController];
+      t1 == null ? null : t1.dispose();
+      t1$ = this[_textControllerValue];
+      t1$ == null ? null : t1$.dispose();
+      binding.WidgetsBinding.instance.removeObserver(this);
+      super.dispose();
+    }
+    didChangeAppLifecycleState(appLifecycleState) {
+      if (appLifecycleState == ui.AppLifecycleState.resumed) {
+        this[_checkClipboard]();
+      }
+    }
+    [_checkClipboard]() {
+      return async.async(dart.void, (function* _checkClipboard() {
+        let t1, t1$, t1$0;
+        let clipboardData = (yield clipboard.Clipboard.getData("text/plain"));
+        if ((t1$ = (t1 = clipboardData, t1 == null ? null : t1.text), t1$ == null ? null : t1$.length) == this.widget.fieldsCount) {
+          t1$0 = this.widget.onClipboardFound;
+          t1$0 == null ? null : t1$0(clipboardData.text);
+        }
+      }).bind(this));
+    }
+    build(context) {
+      return new basic.Stack.new({children: T.JSArrayOfWidgetL().of([this[_hiddenTextField], this[_fields]]), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+    }
+    [_handleTap]() {
+      let focus = focus_scope.FocusScope.of(this.context);
+      if (dart.test(this[_focusNode].hasFocus)) this[_focusNode].unfocus();
+      if (dart.test(focus.hasFocus)) focus.unfocus();
+      focus.requestFocus(new focus_manager.FocusNode.new());
+      T.FutureOfvoid().delayed(core.Duration.zero, dart.fn(() => focus.requestFocus(this[_focusNode]), T.VoidTovoid()));
+      if (this.widget.onTap != null) this.widget.onTap();
+    }
+    get [_hiddenTextField]() {
+      return new text_form_field.TextFormField.new({controller: this[_controller], onTap: this.widget.onTap, onSaved: this.widget.onSaved, onChanged: this.widget.onChanged, validator: this.widget.validator, autovalidateMode: this.widget.autovalidateMode, textInputAction: this.widget.textInputAction, focusNode: this[_focusNode], enabled: this.widget.enabled, enableSuggestions: false, autofocus: this.widget.autofocus, obscureText: this.widget.obscureText != null, autocorrect: false, keyboardAppearance: this.widget.keyboardAppearance, keyboardType: this.widget.keyboardType, textCapitalization: this.widget.textCapitalization, inputFormatters: this.widget.inputFormatters, enableInteractiveSelection: false, maxLength: this.widget.fieldsCount, showCursor: false, scrollPadding: edge_insets.EdgeInsets.zero, decoration: this.widget.inputDecoration, style: this.widget.textStyle != null ? this.widget.textStyle.copyWith({color: colors.Colors.transparent}) : C[3] || CT.C3, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+    }
+    get [_fields]() {
+      return new (T.ValueListenableBuilderOfStringL()).new({valueListenable: this[_textControllerValue], builder: dart.fn((context, value, child) => new gesture_detector.GestureDetector.new({onTap: dart.bind(this, _handleTap), child: new basic.Row.new({mainAxisSize: this.widget.mainAxisSize, mainAxisAlignment: this.widget.fieldsAlignment, children: this[_buildFieldsWithSeparator](), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30}), $creationLocationd_0dea112b090073317d4: C[35] || CT.C35}), T.BuildContextLAndStringLAndWidgetLToGestureDetectorL()), $creationLocationd_0dea112b090073317d4: C[39] || CT.C39});
+    }
+    [_buildFieldsWithSeparator]() {
+      let fields = T.IterableOfintL().generate(this.widget.fieldsCount)[$map](T.WidgetL(), dart.fn(index => this[_getField](index), T.intLToWidgetL()))[$toList]();
+      for (let i of this.widget.separatorPositions) {
+        if (dart.notNull(i) <= dart.notNull(this.widget.fieldsCount)) {
+          let smaller = this.widget.separatorPositions[$where](dart.fn(d => dart.notNull(d) < dart.notNull(i), T.intLToboolL()))[$toList]();
+          fields[$insert](dart.notNull(i) + dart.notNull(smaller[$length]), this.widget.separator);
+        }
+      }
+      return fields;
+    }
+    [_getField](index) {
+      let pin = this[_controller].value.text;
+      return new implicit_animations.AnimatedContainer.new({width: this.widget.eachFieldWidth, height: this.widget.eachFieldHeight, alignment: this.widget.eachFieldAlignment, duration: this.widget.animationDuration, curve: this.widget.animationCurve, padding: this.widget.eachFieldPadding, margin: this.widget.eachFieldMargin, constraints: this.widget.eachFieldConstraints, decoration: this[_fieldDecoration](index), child: new animated_switcher.AnimatedSwitcher.new({switchInCurve: this.widget.animationCurve, switchOutCurve: this.widget.animationCurve, duration: this.widget.animationDuration, transitionBuilder: dart.fn((child, animation) => this[_getTransition](child, animation), T.WidgetLAndAnimationLOfdoubleLToWidgetL()), child: this[_buildFieldContent](index, pin), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43}), $creationLocationd_0dea112b090073317d4: C[50] || CT.C50});
+    }
+    [_buildFieldContent](index, pin) {
+      let t1;
+      if (dart.notNull(index) < pin.length) {
+        return new text.Text.new((t1 = this.widget.obscureText, t1 == null ? pin[$_get](index) : t1), {key: new (T.ValueKeyOfStringL()).new(dart.notNull(index) < pin.length ? pin[$_get](index) : ""), style: this.widget.textStyle, $creationLocationd_0dea112b090073317d4: C[62] || CT.C62});
+      }
+      if (dart.test(this.widget.withCursor) && dart.test(this[_focusNode].hasFocus) && index === pin.length) {
+        return this[_buildCursor]();
+      }
+      if (this.widget.preFilledWidget != null) return new basic.SizedBox.new({key: new (T.ValueKeyOfStringL()).new(dart.notNull(index) < pin.length ? pin[$_get](index) : ""), child: this.widget.preFilledWidget, $creationLocationd_0dea112b090073317d4: C[67] || CT.C67});
+      return new text.Text.new("", {key: new (T.ValueKeyOfStringL()).new(dart.notNull(index) < pin.length ? pin[$_get](index) : ""), style: this.widget.textStyle, $creationLocationd_0dea112b090073317d4: C[71] || CT.C71});
+    }
+    [_fieldDecoration](index) {
+      if (!dart.test(this.widget.enabled)) return this.widget.disabledDecoration;
+      if (dart.notNull(index) < dart.notNull(this.selectedIndex) && dart.test(this[_focusNode].hasFocus)) {
+        return this.widget.submittedFieldDecoration;
+      }
+      if (index == this.selectedIndex && dart.test(this[_focusNode].hasFocus)) {
+        return this.widget.selectedFieldDecoration;
+      }
+      return this.widget.followingFieldDecoration;
+    }
+    [_getTransition](child, animation) {
+      let t1;
+      switch (this.widget.pinAnimationType) {
+        case C[76] || CT.C76:
+        {
+          return child;
+        }
+        case C[81] || CT.C81:
+        {
+          return new transitions.FadeTransition.new({opacity: T.AnimationOfdouble().as(animation), child: child, $creationLocationd_0dea112b090073317d4: C[77] || CT.C77});
+        }
+        case C[86] || CT.C86:
+        {
+          return new transitions.ScaleTransition.new({scale: T.AnimationOfdouble().as(animation), child: child, $creationLocationd_0dea112b090073317d4: C[82] || CT.C82});
+        }
+        case C[91] || CT.C91:
+        {
+          return new transitions.SlideTransition.new({position: new (T.TweenOfOffsetL()).new({begin: (t1 = this.widget.slideTransitionBeginOffset, t1 == null ? new ui.Offset.new(0.8, 0.0) : t1), end: ui.Offset.zero}).animate(T.AnimationLOfdoubleL().as(animation)), child: child, $creationLocationd_0dea112b090073317d4: C[87] || CT.C87});
+        }
+        case C[96] || CT.C96:
+        {
+          return new transitions.RotationTransition.new({turns: T.AnimationOfdouble().as(animation), child: child, $creationLocationd_0dea112b090073317d4: C[92] || CT.C92});
+        }
+      }
+      return child;
+    }
+    [_buildCursor]() {
+      return new transitions.AnimatedBuilder.new({animation: this[_cursorAnimationController], builder: dart.fn((context, child) => {
+          let t1;
+          return new basic.Center.new({child: new basic.Opacity.new({opacity: core.double.as(this[_cursorAnimation].value), child: (t1 = this.widget.cursor, t1 == null ? new text.Text.new("|", {style: this.widget.textStyle, $creationLocationd_0dea112b090073317d4: C[97] || CT.C97}) : t1), $creationLocationd_0dea112b090073317d4: C[101] || CT.C101}), $creationLocationd_0dea112b090073317d4: C[105] || CT.C105});
+        }, T.BuildContextLAndWidgetLToCenterL()), $creationLocationd_0dea112b090073317d4: C[108] || CT.C108});
+    }
+  };
+  (pin_put_state.PinPutState.new = function() {
+    this[_controller] = null;
+    this[_focusNode] = null;
+    this[_textControllerValue] = null;
+    this[_cursorAnimation] = null;
+    this[_cursorAnimationController] = null;
+    pin_put_state.PinPutState.__proto__.new.call(this);
+    ;
+  }).prototype = pin_put_state.PinPutState.prototype;
+  dart.addTypeTests(pin_put_state.PinPutState);
+  dart.addTypeCaches(pin_put_state.PinPutState);
+  dart.setMethodSignature(pin_put_state.PinPutState, () => ({
+    __proto__: dart.getMethods(pin_put_state.PinPutState.__proto__),
+    [_textChangeListener]: dart.fnType(dart.void, []),
+    [_checkClipboard]: dart.fnType(dart.legacy(async.Future$(dart.void)), []),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]),
+    [_handleTap]: dart.fnType(dart.void, []),
+    [_buildFieldsWithSeparator]: dart.fnType(dart.legacy(core.List$(dart.legacy(framework.Widget))), []),
+    [_getField]: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(core.int)]),
+    [_buildFieldContent]: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(core.int), dart.legacy(core.String)]),
+    [_fieldDecoration]: dart.fnType(dart.legacy(box_decoration.BoxDecoration), [dart.legacy(core.int)]),
+    [_getTransition]: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.Widget), dart.legacy(animation.Animation)]),
+    [_buildCursor]: dart.fnType(dart.legacy(framework.Widget), [])
+  }));
+  dart.setGetterSignature(pin_put_state.PinPutState, () => ({
+    __proto__: dart.getGetters(pin_put_state.PinPutState.__proto__),
+    selectedIndex: dart.legacy(core.int),
+    [_hiddenTextField]: dart.legacy(framework.Widget),
+    [_fields]: dart.legacy(framework.Widget)
+  }));
+  dart.setLibraryUri(pin_put_state.PinPutState, I[2]);
+  dart.setFieldSignature(pin_put_state.PinPutState, () => ({
+    __proto__: dart.getFields(pin_put_state.PinPutState.__proto__),
+    [_controller]: dart.fieldType(dart.legacy(editable_text.TextEditingController)),
+    [_focusNode]: dart.fieldType(dart.legacy(focus_manager.FocusNode)),
+    [_textControllerValue]: dart.fieldType(dart.legacy(change_notifier.ValueNotifier$(dart.legacy(core.String)))),
+    [_cursorAnimation]: dart.fieldType(dart.legacy(animation.Animation)),
+    [_cursorAnimationController]: dart.fieldType(dart.legacy(animation_controller.AnimationController))
+  }));
+  pin_put.PinAnimationType = class PinAnimationType extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (pin_put.PinAnimationType.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = pin_put.PinAnimationType.prototype;
+  dart.addTypeTests(pin_put.PinAnimationType);
+  dart.addTypeCaches(pin_put.PinAnimationType);
+  dart.setMethodSignature(pin_put.PinAnimationType, () => ({
+    __proto__: dart.getMethods(pin_put.PinAnimationType.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(pin_put.PinAnimationType, I[1]);
+  dart.setFieldSignature(pin_put.PinAnimationType, () => ({
+    __proto__: dart.getFields(pin_put.PinAnimationType.__proto__),
+    index: dart.finalFieldType(dart.legacy(core.int)),
+    [_name$]: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(pin_put.PinAnimationType, ['toString']);
+  pin_put.PinAnimationType.none = C[76] || CT.C76;
+  pin_put.PinAnimationType.scale = C[86] || CT.C86;
+  pin_put.PinAnimationType.fade = C[81] || CT.C81;
+  pin_put.PinAnimationType.slide = C[91] || CT.C91;
+  pin_put.PinAnimationType.rotation = C[96] || CT.C96;
+  pin_put.PinAnimationType.values = C[132] || CT.C132;
+  dart.trackLibraries("packages/pinput/pin_put/pin_put_state.dart", {
+    "package:pinput/pin_put/pin_put_state.dart": pin_put_state,
+    "package:pinput/pin_put/pin_put.dart": pin_put
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["pin_put.dart","pin_put_state.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;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","file":"../../../../../../../../../../../../D:/packages/pinput/pin_put/pin_put_state.dart.lib.js"}');
+  // Exports:
+  return {
+    pin_put__pin_put_state: pin_put_state,
+    pin_put__pin_put: pin_put
+  };
+}));
+
+//# sourceMappingURL=pin_put_state.dart.lib.js.map

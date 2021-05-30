@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "172578137694",
+    "project_id": "knocadoor",
+    "storage_bucket": "knocadoor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172578137694:android:abe997020c9367169476cf",
+        "android_client_info": {
+          "package_name": "com.example.knocadoor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172578137694-3c3v7a08fj00b3h58oqtvvo8lu73gper.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.knocadoor",
+            "certificate_hash": "d3dec69d67659be2311e3668db7bfc1cf8358bd1"
+          }
+        },
+        {
+          "client_id": "172578137694-nlhs7kvsot4kni3p79421qa1tv6a9km3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqJLOHBR4EJuRXDEDD0wj5E9W5SGkjaZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172578137694-nlhs7kvsot4kni3p79421qa1tv6a9km3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

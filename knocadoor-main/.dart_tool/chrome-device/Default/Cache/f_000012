@@ -1,0 +1,369 @@
+define(['dart_sdk', 'packages/firebase_auth/firebase_auth.dart', 'packages/knocadoor/services/users.dart', 'packages/knocadoor/services/order.dart', 'packages/knocadoor/services/favorite.dart', 'packages/knocadoor/models/favorite.dart', 'packages/flutter/src/services/system_channels.dart', 'packages/uuid/uuid.dart', 'packages/knocadoor/models/cart_item.dart', 'packages/knocadoor/models/favorite_item.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/knocadoor/models/user.dart', 'packages/knocadoor/models/product.dart', 'packages/knocadoor/models/order.dart'], (function load__packages__knocadoor__provider__user_dart(dart_sdk, packages__firebase_auth__firebase_auth$46dart, packages__knocadoor__services__users$46dart, packages__knocadoor__services__order$46dart, packages__knocadoor__services__favorite$46dart, packages__knocadoor__models__favorite$46dart, packages__flutter__src__services__system_channels$46dart, packages__uuid__uuid$46dart, packages__knocadoor__models__cart_item$46dart, packages__knocadoor__models__favorite_item$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__knocadoor__models__user$46dart, packages__knocadoor__models__product$46dart, packages__knocadoor__models__order$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const async = dart_sdk.async;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const firebase_auth = packages__firebase_auth__firebase_auth$46dart.firebase_auth;
+  const users = packages__knocadoor__services__users$46dart.services__users;
+  const order = packages__knocadoor__services__order$46dart.services__order;
+  const favorite = packages__knocadoor__services__favorite$46dart.services__favorite;
+  const favorite$ = packages__knocadoor__models__favorite$46dart.models__favorite;
+  const message_codec = packages__flutter__src__services__system_channels$46dart.src__services__message_codec;
+  const uuid$ = packages__uuid__uuid$46dart.uuid;
+  const cart_item = packages__knocadoor__models__cart_item$46dart.models__cart_item;
+  const favorite_item = packages__knocadoor__models__favorite_item$46dart.models__favorite_item;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  const user = packages__knocadoor__models__user$46dart.models__user;
+  const product = packages__knocadoor__models__product$46dart.models__product;
+  const order$ = packages__knocadoor__models__order$46dart.models__order;
+  var user$ = Object.create(dart.library);
+  var $toString = dartx.toString;
+  var $length = dartx.length;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    StatusL: () => (T.StatusL = dart.constFn(dart.legacy(user$.Status)))(),
+    FavoriteModelL: () => (T.FavoriteModelL = dart.constFn(dart.legacy(favorite$.FavoriteModel)))(),
+    JSArrayOfFavoriteModelL: () => (T.JSArrayOfFavoriteModelL = dart.constFn(_interceptors.JSArray$(T.FavoriteModelL())))(),
+    FutureOfNull: () => (T.FutureOfNull = dart.constFn(async.Future$(core.Null)))(),
+    FutureLOfNull: () => (T.FutureLOfNull = dart.constFn(dart.legacy(T.FutureOfNull())))(),
+    AuthResultL: () => (T.AuthResultL = dart.constFn(dart.legacy(firebase_auth.AuthResult)))(),
+    AuthResultLToFutureLOfNull: () => (T.AuthResultLToFutureLOfNull = dart.constFn(dart.fnType(T.FutureLOfNull(), [T.AuthResultL()])))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    IdentityMapOfStringL$dynamic: () => (T.IdentityMapOfStringL$dynamic = dart.constFn(_js_helper.IdentityMap$(T.StringL(), dart.dynamic)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: user$.Status.prototype,
+        [_name$]: "Status.init",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: user$.Status.prototype,
+        [_name$]: "Status.Uninitialized",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: user$.Status.prototype,
+        [_name$]: "Status.Authenticated",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: user$.Status.prototype,
+        [_name$]: "Status.Authenticating",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: user$.Status.prototype,
+        [_name$]: "Status.Unauthenticated",
+        index: 4
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T.StatusL());
+    }
+  }, false);
+  var C = Array(6).fill(void 0);
+  var I = ["package:knocadoor/provider/user.dart"];
+  var _name$ = dart.privateName(user$, "_name");
+  user$.Status = class Status extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (user$.Status.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = user$.Status.prototype;
+  dart.addTypeTests(user$.Status);
+  dart.addTypeCaches(user$.Status);
+  dart.setMethodSignature(user$.Status, () => ({
+    __proto__: dart.getMethods(user$.Status.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(user$.Status, I[0]);
+  dart.setFieldSignature(user$.Status, () => ({
+    __proto__: dart.getFields(user$.Status.__proto__),
+    index: dart.finalFieldType(dart.legacy(core.int)),
+    [_name$]: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(user$.Status, ['toString']);
+  user$.Status.init = C[0] || CT.C0;
+  user$.Status.Uninitialized = C[1] || CT.C1;
+  user$.Status.Authenticated = C[2] || CT.C2;
+  user$.Status.Authenticating = C[3] || CT.C3;
+  user$.Status.Unauthenticated = C[4] || CT.C4;
+  user$.Status.values = C[5] || CT.C5;
+  var orders = dart.privateName(user$, "UserProvider.orders");
+  var favorites = dart.privateName(user$, "UserProvider.favorites");
+  var _auth = dart.privateName(user$, "_auth");
+  var _user = dart.privateName(user$, "_user");
+  var _status = dart.privateName(user$, "_status");
+  var _userServices = dart.privateName(user$, "_userServices");
+  var _orderServices = dart.privateName(user$, "_orderServices");
+  var _favoriteServices = dart.privateName(user$, "_favoriteServices");
+  var _userModel = dart.privateName(user$, "_userModel");
+  var _onStateChanged = dart.privateName(user$, "_onStateChanged");
+  const Object_ChangeNotifier$36 = class Object_ChangeNotifier extends core.Object {};
+  (Object_ChangeNotifier$36.new = function() {
+    change_notifier.ChangeNotifier.new.call(this);
+  }).prototype = Object_ChangeNotifier$36.prototype;
+  dart.applyMixin(Object_ChangeNotifier$36, change_notifier.ChangeNotifier);
+  user$.UserProvider = class UserProvider extends Object_ChangeNotifier$36 {
+    get orders() {
+      return this[orders];
+    }
+    set orders(value) {
+      this[orders] = value;
+    }
+    get favorites() {
+      return this[favorites];
+    }
+    set favorites(value) {
+      this[favorites] = value;
+    }
+    get userModel() {
+      return this[_userModel];
+    }
+    get status() {
+      return this[_status];
+    }
+    get user() {
+      return this[_user];
+    }
+    signIn(email, password) {
+      return async.async(T.boolL(), (function* signIn() {
+        try {
+          this[_status] = user$.Status.Authenticating;
+          this.notifyListeners();
+          yield this[_auth].signInWithEmailAndPassword({email: email, password: password}).then(core.Null, dart.fn(value => async.async(core.Null, (function*() {
+            this[_userModel] = (yield this[_userServices].getUserById(value.user.uid));
+            this.notifyListeners();
+          }).bind(this)), T.AuthResultLToFutureLOfNull()));
+          return true;
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          this[_status] = user$.Status.Unauthenticated;
+          new message_codec.PlatformException.new({code: dart.toString(e), details: "wrong email/pw", message: "Sorry paswsword or username is incorrect"});
+          this.notifyListeners();
+          core.print(dart.toString(e));
+          return false;
+        }
+      }).bind(this));
+    }
+    signUp(name, email, password) {
+      return async.async(T.boolL(), (function* signUp() {
+        try {
+          this[_status] = user$.Status.Authenticating;
+          this.notifyListeners();
+          yield this[_auth].createUserWithEmailAndPassword({email: email, password: password}).then(core.Null, dart.fn(user => async.async(core.Null, (function*() {
+            core.print("CREATE USER");
+            this[_userServices].createUser(new (T.IdentityMapOfStringL$dynamic()).from(["name", name, "email", email, "uid", user.user.uid, "stripeId", ""]));
+            this[_userModel] = (yield this[_userServices].getUserById(user.user.uid));
+            this.notifyListeners();
+          }).bind(this)), T.AuthResultLToFutureLOfNull()));
+          return true;
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          this[_status] = user$.Status.Unauthenticated;
+          this.notifyListeners();
+          core.print(dart.toString(e));
+          return false;
+        }
+      }).bind(this));
+    }
+    resetPassword(email) {
+      return async.async(dart.void, (function* resetPassword() {
+        return this[_auth].sendPasswordResetEmail({email: email});
+      }).bind(this));
+    }
+    signOut() {
+      return async.async(dart.dynamic, (function* signOut() {
+        this[_auth].signOut();
+        this[_status] = user$.Status.Unauthenticated;
+        this.notifyListeners();
+        return async.Future.delayed(core.Duration.zero);
+      }).bind(this));
+    }
+    [_onStateChanged](user) {
+      return async.async(dart.void, (function* _onStateChanged() {
+        if (user == null) {
+          this[_status] = user$.Status.Unauthenticated;
+        } else {
+          this[_user] = user;
+          this[_userModel] = (yield this[_userServices].getUserById(user.uid));
+          core.print("CART ITEMS: " + dart.str(this.userModel.cart[$length]));
+          core.print("CART ITEMS: " + dart.str(this.userModel.cart[$length]));
+          core.print("CART ITEMS: " + dart.str(this.userModel.cart[$length]));
+          core.print("CART ITEMS: " + dart.str(this.userModel.cart[$length]));
+          core.print("CART ITEMS: " + dart.str(this.userModel.cart[$length]));
+          this[_status] = user$.Status.Authenticated;
+        }
+        this.notifyListeners();
+      }).bind(this));
+    }
+    addToCart(opts) {
+      let product = opts && 'product' in opts ? opts.product : null;
+      let size = opts && 'size' in opts ? opts.size : null;
+      let color = opts && 'color' in opts ? opts.color : null;
+      return async.async(T.boolL(), (function* addToCart() {
+        try {
+          let uuid = new uuid$.Uuid.new();
+          let cartItemId = uuid.v4();
+          let cart = this[_userModel].cart;
+          let cartItem = new _js_helper.LinkedMap.from(["id", cartItemId, "name", product.name, "image", product.picture, "productId", product.id, "price", product.price]);
+          let item = new cart_item.CartItemModel.fromMap(cartItem);
+          core.print("CART ITEMS ARE: " + dart.str(dart.toString(cart)));
+          this[_userServices].addToCart({userId: this[_user].uid, cartItem: item});
+          return true;
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          core.print("THE ERROR " + dart.str(dart.toString(e)));
+          return false;
+        }
+      }).bind(this));
+    }
+    removeFromCart(opts) {
+      let cartItem = opts && 'cartItem' in opts ? opts.cartItem : null;
+      return async.async(T.boolL(), (function* removeFromCart() {
+        core.print("THE PRODUC IS: " + dart.str(dart.toString(cartItem)));
+        try {
+          this[_userServices].removeFromCart({userId: this[_user].uid, cartItem: cartItem});
+          return true;
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          core.print("THE ERROR " + dart.str(dart.toString(e)));
+          return false;
+        }
+      }).bind(this));
+    }
+    addToFavorite(opts) {
+      let product = opts && 'product' in opts ? opts.product : null;
+      return async.async(T.boolL(), (function* addToFavorite() {
+        try {
+          let uuid = new uuid$.Uuid.new();
+          let favoriteItemId = uuid.v4();
+          let favorite = this[_userModel].favorite;
+          let favoriteItem = new _js_helper.LinkedMap.from(["id", favoriteItemId, "name", product.name, "image", product.picture, "productId", product.id, "price", product.price]);
+          let item = new favorite_item.FavoriteItemModel.fromMap(favoriteItem);
+          core.print("CART ITEMS ARE: " + dart.str(dart.toString(favorite)));
+          this[_userServices].addToFavorite({userId: this[_user].uid, favoriteItem: item});
+          return true;
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          core.print("THE ERROR " + dart.str(dart.toString(e)));
+          return false;
+        }
+      }).bind(this));
+    }
+    removeFromFavorite(opts) {
+      let favoriteItem = opts && 'favoriteItem' in opts ? opts.favoriteItem : null;
+      return async.async(T.boolL(), (function* removeFromFavorite() {
+        core.print("THE PRODUC IS: " + dart.str(dart.toString(favoriteItem)));
+        try {
+          this[_userServices].removeFromFavorite({userId: this[_user].uid, favoriteItem: favoriteItem});
+          return true;
+        } catch (e$) {
+          let e = dart.getThrown(e$);
+          core.print("THE ERROR " + dart.str(dart.toString(e)));
+          return false;
+        }
+      }).bind(this));
+    }
+    getOrders() {
+      return async.async(dart.dynamic, (function* getOrders() {
+        this.orders = (yield this[_orderServices].getUserOrders({userId: this[_user].uid}));
+        this.notifyListeners();
+      }).bind(this));
+    }
+    getFavorite() {
+      return async.async(dart.dynamic, (function* getFavorite() {
+        this.favorites = (yield this[_favoriteServices].getUserFavorites({userId: this[_user].uid}));
+        this.notifyListeners();
+      }).bind(this));
+    }
+    reloadUserModel() {
+      return async.async(dart.void, (function* reloadUserModel() {
+        this[_userModel] = (yield this[_userServices].getUserById(this.user.uid));
+        this.notifyListeners();
+      }).bind(this));
+    }
+  };
+  (user$.UserProvider.initialize = function() {
+    this[_auth] = firebase_auth.FirebaseAuth.instance;
+    this[_user] = null;
+    this[_status] = user$.Status.Uninitialized;
+    this[_userServices] = new users.UserServices.new();
+    this[_orderServices] = new order.OrderServices.new();
+    this[_favoriteServices] = new favorite.FavoriteServices.new();
+    this[_userModel] = null;
+    this[orders] = null;
+    this[favorites] = T.JSArrayOfFavoriteModelL().of([]);
+    this[_auth] = firebase_auth.FirebaseAuth.instance;
+    user$.UserProvider.__proto__.new.call(this);
+    this[_auth].onAuthStateChanged.listen(dart.bind(this, _onStateChanged));
+  }).prototype = user$.UserProvider.prototype;
+  dart.addTypeTests(user$.UserProvider);
+  dart.addTypeCaches(user$.UserProvider);
+  dart.setMethodSignature(user$.UserProvider, () => ({
+    __proto__: dart.getMethods(user$.UserProvider.__proto__),
+    signIn: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [dart.legacy(core.String), dart.legacy(core.String)]),
+    signUp: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [dart.legacy(core.String), dart.legacy(core.String), dart.legacy(core.String)]),
+    resetPassword: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.String)]),
+    signOut: dart.fnType(dart.legacy(async.Future), []),
+    [_onStateChanged]: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(firebase_auth.FirebaseUser)]),
+    addToCart: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [], {color: dart.legacy(core.String), product: dart.legacy(product.ProductModel), size: dart.legacy(core.String)}, {}),
+    removeFromCart: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [], {cartItem: dart.legacy(cart_item.CartItemModel)}, {}),
+    addToFavorite: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [], {product: dart.legacy(product.ProductModel)}, {}),
+    removeFromFavorite: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.bool))), [], {favoriteItem: dart.legacy(favorite_item.FavoriteItemModel)}, {}),
+    getOrders: dart.fnType(dart.dynamic, []),
+    getFavorite: dart.fnType(dart.dynamic, []),
+    reloadUserModel: dart.fnType(dart.legacy(async.Future$(dart.void)), [])
+  }));
+  dart.setGetterSignature(user$.UserProvider, () => ({
+    __proto__: dart.getGetters(user$.UserProvider.__proto__),
+    userModel: dart.legacy(user.UserModel),
+    status: dart.legacy(user$.Status),
+    user: dart.legacy(firebase_auth.FirebaseUser)
+  }));
+  dart.setLibraryUri(user$.UserProvider, I[0]);
+  dart.setFieldSignature(user$.UserProvider, () => ({
+    __proto__: dart.getFields(user$.UserProvider.__proto__),
+    [_auth]: dart.fieldType(dart.legacy(firebase_auth.FirebaseAuth)),
+    [_user]: dart.fieldType(dart.legacy(firebase_auth.FirebaseUser)),
+    [_status]: dart.fieldType(dart.legacy(user$.Status)),
+    [_userServices]: dart.fieldType(dart.legacy(users.UserServices)),
+    [_orderServices]: dart.fieldType(dart.legacy(order.OrderServices)),
+    [_favoriteServices]: dart.fieldType(dart.legacy(favorite.FavoriteServices)),
+    [_userModel]: dart.fieldType(dart.legacy(user.UserModel)),
+    orders: dart.fieldType(dart.legacy(core.List$(dart.legacy(order$.OrderModel)))),
+    favorites: dart.fieldType(dart.legacy(core.List$(dart.legacy(favorite$.FavoriteModel))))
+  }));
+  dart.trackLibraries("packages/knocadoor/provider/user.dart", {
+    "package:knocadoor/provider/user.dart": user$
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["user.dart"],"names":[],"mappings":"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","file":"../../../../../packages/knocadoor/provider/user.dart.lib.js"}');
+  // Exports:
+  return {
+    provider__user: user$
+  };
+}));
+
+//# sourceMappingURL=user.dart.lib.js.map
