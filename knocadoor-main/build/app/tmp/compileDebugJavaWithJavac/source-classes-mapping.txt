@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/example/knocadoor/BuildConfig.java
- com.example.knocadoor.BuildConfig

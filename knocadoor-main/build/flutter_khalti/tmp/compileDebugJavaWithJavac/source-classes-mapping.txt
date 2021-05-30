@@ -1,2 +1,0 @@
-com/example/flutterkhalti/BuildConfig.java
- com.example.flutterkhalti.BuildConfig
