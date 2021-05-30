@@ -127,8 +127,6 @@ class _DeliveryAddressState extends State<DeliveryAddress> {
                         name: userProvider.userModel.name,
                         totalPrice:
                             userProvider.userModel.totalCartPrice * 100);
-
-                    userProvider.reloadUserModel();
                   },
                   child: Text(
                     "Accept",
