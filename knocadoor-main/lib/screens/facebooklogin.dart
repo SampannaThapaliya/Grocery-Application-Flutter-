@@ -154,7 +154,7 @@ class _fblogState extends State<fblog> {
                             // AuthCredential credential = FacebookAuthProvider.getCredential(
                             //accessToken: result.accessToken.toString());
                             final graphResponse = await http.get(Uri.parse(
-                                'https://graph.facebook.com/v2.12/me?fields=email,name&access_token=${accessToken.token}'));
+                                'https://graph.facebook.com/v2.12/me?fields=name,email&access_token=${accessToken.token}'));
 
                             dynamic profile = jsonDecode(graphResponse.body);
 
