@@ -23,3 +23,6 @@ samples, guidance on mobile development, and a full API reference.
 - Global Chat
 - Khalti Payment 
 - Password Reset 
+
+
+State Management: Provider 
