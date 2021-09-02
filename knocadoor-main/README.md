@@ -1,4 +1,4 @@
-# Grocery Shopn
+# Grocery Shop
 
 A new Flutter project.
 
